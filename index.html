@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SasaMiaw.CO | Cute Chiikawa Keychains</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="pixel-loader"></div>
+        <p style="margin-top: 15px; color: var(--pink-darker); font-family: 'Silkscreen', cursive;">Loading SasaMiaw.CO...</p>
+    </div>
+    
+    <!-- Overlay for modals -->
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Cute Notification -->
+    <div class="cute-notification" id="cuteNotification">
+        <div class="notification-icon">🛍️</div>
+        <div class="notification-content">
+            <h4>Added to Cart!</h4>
+            <p id="notificationMessage">Your item has been added to the cart successfully!</p>
+        </div>
+    </div>
+    
+    <!-- Checkout Form -->
+    <div class="checkout-form" id="checkoutForm">
+        <h2>Checkout 🛒</h2>
+        <form id="checkoutFormElement">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Shipping Address</label>
+                <textarea id="address" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="postalCode">Postal Code</label>
+                    <input type="text" id="postalCode" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="shipping">Shipping Method</label>
+                <select id="shipping" required>
+                    <option value="">Select shipping method</option>
+                    <option value="regular">Regular Shipping (3-5 days) - Rp 10,000</option>
+                    <option value="express">Express Shipping (1-2 days) - Rp 25,000</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="payment">Payment Method</label>
+                <select id="payment" required>
+                    <option value="">Select payment method</option>
+                    <option value="bank">Bank Transfer</option>
+                    <option value="ewallet">E-Wallet (OVO, Dana, Gopay)</option>
+                    <option value="creditcard">Credit Card</option>
+                </select>
+            </div>
+            
+            <div class="checkout-summary">
+                <h4>Order Summary</h4>
+                <div class="summary-item">
+                    <span>Subtotal:</span>
+                    <span id="summarySubtotal">Rp 0</span>
+                </div>
+                <div class="summary-item">
+                    <span>Shipping:</span>
+                    <span id="summaryShipping">Rp 0</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total:</span>
+                    <span id="summaryTotal">Rp 0</span>
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <button type="submit" class="submit-order">Place Order</button>
+                <button type="button" class="cancel-order" id="cancelOrderBtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Social Media Contact Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-header">
+            <h2>Contact Us 📱</h2>
+            <button class="close-contact" id="closeContactBtn">&times;</button>
+        </div>
+        <div class="contact-body">
+            <div class="contact-intro">
+                <p>Follow us on social media for updates, promotions, and cute keychain content!</p>
+            </div>
+            <div class="social-cards">
+                <div class="social-card instagram">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="social-info">
+                        <h3>Instagram</h3>
+                        <p>@sasamiaw.co</p>
+                        <a href="#" class="social-link">Follow Us <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="social-card tiktok">
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <div class="social-info">
+                        <h3>TikTok</h3>
+                        <p>@sasamiaw.co</p>
+                        <a href="#" class="social-link">Follow Us <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="social-card twitter">
+                    <div class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="social-info">
+                        <h3>Twitter</h3>
+                        <p>@sasamiaw_co</p>
+                        <a href="#" class="social-link">Follow Us <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="social-card whatsapp">
+                    <div class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="social-info">
+                        <h3>WhatsApp</h3>
+                        <p>+62 812 3456 7890</p>
+                        <a href="#" class="social-link">Chat Now <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-note">
+                <p><i class="fas fa-envelope"></i> Email: hello@sasamiaw.co</p>
+                <p><i class="fas fa-clock"></i> Response Time: Within 24 hours</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Home Page -->
+    <div id="homePage" class="page-transition active">
+        <!-- Header / Navbar - UPDATED -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">SasaMiaw.CO</span>
+            </div>
+            
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">All Products</a></li>
+                        <li><a href="#" class="nav-link" data-page="testimonials">Testimonials</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-page="faq">FAQs</a></li>
+                        <li><a href="#" class="nav-link" id="contactLink">Contact</a></li>
+                        <li class="search-container">
+                            <div class="search-bar">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="searchInput" placeholder="Search keychains...">
+                            </div>
+                        </li>
+                        <li class="cart-icon" id="cartIcon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h1>Adorable Chiikawa Keychains Collection >___0</h1>
+            <p>Discover cute keychains to decorate your bags, keys, or as a collection! Each keychain is made with unique and playful designs.</p>
+            <button class="cta-button" id="shopNowBtn">Explore Now</button>
+        </section>
+        
+        <!-- Featured Products Section -->
+        <section id="featuredProducts">
+            <h2 class="section-title">Featured Keychains ^____^</h2>
+            <p class="section-subtitle">Our most popular keychains loved by customers</p>
+            <div class="products-container" id="featuredProductsContainer">
+                <!-- Featured products will be generated by JavaScript -->
+            </div>
+            <button class="see-all-btn" id="seeAllBtn">See All Products →</button>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonialsSection">
+            <h2 class="section-title">Customer Reviews 0____0</h2>
+            <p class="section-subtitle">What our customers say about our keychains</p>
+            <div class="testimonial-container" id="testimonialContainer">
+                <!-- Testimonials will be generated by JavaScript -->
+            </div>
+        </section>
+    </div>
+    
+    <!-- Products Page -->
+    <div class="products-page" id="productsPage">
+        <!-- Header / Navbar - UPDATED -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">SasaMiaw.CO</span>
+            </div>
+            
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">All Products</a></li>
+                        <li><a href="#" class="nav-link" data-page="testimonials">Testimonials</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-page="faq">FAQs</a></li>
+                        <li><a href="#" class="nav-link" id="contactLinkProducts">Contact</a></li>
+                        <li class="search-container">
+                            <div class="search-bar">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="searchInputProducts" placeholder="Search keychains...">
+                            </div>
+                        </li>
+                        <li class="cart-icon" id="cartIconProducts">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-badge" id="cartBadgeProducts">0</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <div class="page-header">
+            <h1>All Keychains Collection</h1>
+            <p>Browse our complete collection of acrylic and plush keychains</p>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="acrylic">Acrylic</button>
+                <button class="filter-btn" data-filter="plush">Plush</button>
+            </div>
+            
+            <div class="sort-container">
+                <span>Sort by:</span>
+                <select class="sort-select" id="sortSelect">
+                    <option value="default">Default</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rating</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="products-container" id="allProductsContainer">
+            <!-- All products will be generated by JavaScript -->
+        </div>
+    </div>
+    
+    <!-- About Page -->
+    <div class="products-page" id="aboutPage" style="display: none;">
+        <!-- Header / Navbar - UPDATED -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">SasaMiaw.CO</span>
+            </div>
+            
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">All Products</a></li>
+                        <li><a href="#" class="nav-link" data-page="testimonials">Testimonials</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-page="faq">FAQs</a></li>
+                        <li><a href="#" class="nav-link" id="contactLinkAbout">Contact</a></li>
+                        <li class="search-container">
+                            <div class="search-bar">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="searchInputAbout" placeholder="Search keychains...">
+                            </div>
+                        </li>
+                        <li class="cart-icon" id="cartIconAbout">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-badge" id="cartBadgeAbout">0</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <div class="page-header">
+            <h1>About SasaMiaw.CO 🐱</h1>
+            <p>Learn more about our brand and mission</p>
+        </div>
+        
+        <div class="about-container">
+            <div class="about-text">
+                <h2 style="color: var(--pink-darker); margin-bottom: 1.5rem; font-family: 'Silkscreen', cursive;">Our Story</h2>
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Welcome to <strong style="color: var(--pink-darker);">SasaMiaw.CO</strong>, your go-to destination for adorable and aesthetic keychains!</p>
+                
+                <p style="margin-bottom: 1.5rem;">Founded in 2023, we started with a simple mission: to spread joy through cute and playful accessories. Our keychains are designed to bring a smile to your face every time you see them.</p>
+                
+                <h3 style="color: var(--pink-darker); margin-bottom: 1rem; font-family: 'Silkscreen', cursive;">Our Collections</h3>
+                <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Acrylic Keychains</strong>: Durable, colorful, and perfect for everyday use.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Plush Keychains</strong>: Soft, huggable, and great for bag decorations.</li>
+                    <li><strong>Special Editions</strong>: Limited designs released seasonally.</li>
+                </ul>
+                
+                <h3 style="color: var(--pink-darker); margin-bottom: 1rem; font-family: 'Silkscreen', cursive;">Our Values</h3>
+                <p style="margin-bottom: 1.5rem;">We believe in quality, creativity, and customer happiness. Each keychain is carefully designed and inspected to ensure it meets our high standards.</p>
+                
+                <p>Thank you for supporting our small business! We hope our keychains bring as much joy to you as they do to us. ♡</p>
+            </div>
+            
+            <div class="about-image">
+                <img src="images/Untitled.jpeg" alt="SasaMiaw.CO Team" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+    
+    <!-- FAQ Page -->
+    <div class="products-page" id="faqPage" style="display: none;">
+        <!-- Header / Navbar - UPDATED -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">SasaMiaw.CO</span>
+            </div>
+            
+            <div class="nav-container">
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-page="products">All Products</a></li>
+                        <li><a href="#" class="nav-link" data-page="testimonials">Testimonials</a></li>
+                        <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-page="faq">FAQs</a></li>
+                        <li><a href="#" class="nav-link" id="contactLinkFaq">Contact</a></li>
+                        <li class="search-container">
+                            <div class="search-bar">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="searchInputFaq" placeholder="Search keychains...">
+                            </div>
+                        </li>
+                        <li class="cart-icon" id="cartIconFaq">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-badge" id="cartBadgeFaq">0</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        
+        <div class="page-header">
+            <h1>Frequently Asked Questions ❓</h1>
+            <p>Find answers to common questions about our products and services</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-avatar">🐱</div>
+                    <div class="faq-question">What materials are your keychains made of?</div>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We use high-quality materials for all our keychains! Our acrylic keychains are made from durable acrylic with vibrant printing, while our plush keychains are made from soft, premium plush fabric with secure stitching. All materials are safe and non-toxic.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-avatar">🚚</div>
+                    <div class="faq-question">How long does shipping take?</div>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Shipping typically takes 3-5 business days for regular shipping and 1-2 business days for express shipping within Indonesia. International shipping may take 7-14 business days depending on the destination. You'll receive a tracking number once your order ships!
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-header">
+                    <div class="faq-avatar">💖</div>
+                    <div class="faq-question">Can I request a custom keychain design?</div>
+                    <button class="faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, we accept custom orders! Please contact us via email at hello@sasamiaw.co with your design ideas. Custom orders typically take 2-3 weeks to produce and may have a minimum order quantity. We'll work with you to bring your vision to life!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">Shopping Cart 🛒</h2>
+            <button class="close-cart" id="closeCartBtn">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be generated by JavaScript -->
+        </div>
+        <div class="cart-total">
+            Total: <span id="cartTotalPrice">Rp 0</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Checkout Now</button>
+    </div>
+    
+    <!-- Chat Bubble -->
+    <div class="chat-bubble" id="chatBubble">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>SasaMiaw.CO Support 💬</span>
+            <button class="close-chat" id="closeChatBtn">&times;</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message bot">
+                Hello! How can we help you today? ♡
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">SasaMiaw.CO</div>
+                <p>Selling cute, aesthetic, and adorable keychains to accompany your days!</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Menu</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-nav-link" data-page="home">Home</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="products">All Products</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="testimonials">Testimonials</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="footer-nav-link" data-page="faq">FAQs</a></li>
+                    <li><a href="#" class="footer-nav-link contact-footer-link">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> hello@sasamiaw.co</li>
+                    <li><i class="fas fa-phone"></i> +62 812 3456 7890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 SasaMiaw.CO. All rights reserved. Made with ♡ for keychain lovers.
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
